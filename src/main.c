@@ -13,15 +13,19 @@ void print_menu() {
     printf("2. Subtract Vectors\n");
     printf("3. Dot Product\n");
     printf("4. Cross Product\n");
-    printf("5. Perform All Calculations\n");
-    printf("6. Exit\n");
+    printf("5. Magnitude of a Vector\n");
+    printf("6. Normalize a Vector\n");
+    printf("7. Angle Between Vectors\n");
+    printf("8. Projection of Vector a onto Vector b\n");
+    printf("9. Perform All Calculations\n");
+    printf("10. Exit\n");
     printf("=====================================\n");
     printf("Enter your choice: ");
 }
 
 int main() {
-    Vector v1, v2, sum, diff, cross;
-    double dot;
+    Vector v1, v2, result;
+    double dot, magnitude, angle;
     int choice;
 
     printf("Enter vector v1 (x y z): ");
@@ -36,43 +40,73 @@ int main() {
 
         switch (choice) {
             case 1:
-                vector_add(v1, v2, &sum);
+                vector_add(v1, v2, &result);
                 printf("Sum: ");
-                print_vector(sum);
+                print_vector(result);
                 break;
             case 2:
-                vector_subtract(v1, v2, &diff);
+                vector_subtract(v1, v2, &result);
                 printf("Difference: ");
-                print_vector(diff);
+                print_vector(result);
                 break;
             case 3:
                 dot = vector_dot_product(v1, v2);
                 printf("Dot Product: %.2f\n", dot);
                 break;
             case 4:
-                vector_cross_product(v1, v2, &cross);
+                vector_cross_product(v1, v2, &result);
                 printf("Cross Product: ");
-                print_vector(cross);
+                print_vector(result);
                 break;
             case 5:
-                vector_add(v1, v2, &sum);
-                vector_subtract(v1, v2, &diff);
-                dot = vector_dot_product(v1, v2);
-                vector_cross_product(v1, v2, &cross);
-
-                printf("v1: ");
-                print_vector(v1);
-                printf("v2: ");
-                print_vector(v2);
-                printf("Sum: ");
-                print_vector(sum);
-                printf("Difference: ");
-                print_vector(diff);
-                printf("Dot Product: %.2f\n", dot);
-                printf("Cross Product: ");
-                print_vector(cross);
+                magnitude = vector_magnitude(v1);
+                printf("Magnitude of v1: %.2f\n", magnitude);
                 break;
             case 6:
+                vector_normalize(v1, &result);
+                printf("Normalized v1: ");
+                print_vector(result);
+                break;
+            case 7:
+                angle = vector_angle(v1, v2);
+                printf("Angle between v1 and v2: %.2f radians\n", angle);
+                break;
+            case 8:
+                vector_projection(v1, v2, &result);
+                printf("Projection of v1 onto v2: ");
+                print_vector(result);
+                break;
+            case 9:
+                vector_add(v1, v2, &result);
+                printf("Sum: ");
+                print_vector(result);
+
+                vector_subtract(v1, v2, &result);
+                printf("Difference: ");
+                print_vector(result);
+
+                dot = vector_dot_product(v1, v2);
+                printf("Dot Product: %.2f\n", dot);
+
+                vector_cross_product(v1, v2, &result);
+                printf("Cross Product: ");
+                print_vector(result);
+
+                magnitude = vector_magnitude(v1);
+                printf("Magnitude of v1: %.2f\n", magnitude);
+
+                vector_normalize(v1, &result);
+                printf("Normalized v1: ");
+                print_vector(result);
+
+                angle = vector_angle(v1, v2);
+                printf("Angle between v1 and v2: %.2f radians\n", angle);
+
+                vector_projection(v1, v2, &result);
+                printf("Projection of v1 onto v2: ");
+                print_vector(result);
+                break;
+            case 10:
                 printf("Exiting...\n");
                 return 0;
             default:
