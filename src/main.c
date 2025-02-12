@@ -1,50 +1,36 @@
 #include <stdio.h>
 #include "vector.h"
 
+void print_vector(Vector v) {
+    printf("Vector: (%.2f, %.2f, %.2f)\n", v.x, v.y, v.z);
+}
+
 int main() {
-    int choice;
-    Vector v1, v2, result;
+    Vector v1, v2, sum, diff, cross;
+    double dot;
 
-    printf("Vector Calculator\n");
-    printf("1. Add Vectors\n");
-    printf("2. Subtract Vectors\n");
-    printf("3. Dot Product\n");
-    printf("4. Cross Product\n");
-    printf("5. Exit\n");
+    printf("Enter vector v1 (x y z): ");
+    scanf("%lf %lf %lf", &v1.x, &v1.y, &v1.z);
 
-    while (1) {
-        printf("Enter your choice: ");
-        scanf("%d", &choice);
+    printf("Enter vector v2 (x y z): ");
+    scanf("%lf %lf %lf", &v2.x, &v2.y, &v2.z);
 
-        if (choice == 5) {
-            break;
-        }
+    vector_add(v1, v2, &sum);
+    vector_subtract(v1, v2, &diff);
+    dot = vector_dot_product(v1, v2);
+    vector_cross_product(v1, v2, &cross);
 
-        printf("Enter the components of vector 1 (x y z): ");
-        scanf("%f %f %f", &v1.x, &v1.y, &v1.z);
-        printf("Enter the components of vector 2 (x y z): ");
-        scanf("%f %f %f", &v2.x, &v2.y, &v2.z);
-
-        switch (choice) {
-            case 1:
-                result = add_vectors(v1, v2);
-                printf("Result: (%.2f, %.2f, %.2f)\n", result.x, result.y, result.z);
-                break;
-            case 2:
-                result = subtract_vectors(v1, v2);
-                printf("Result: (%.2f, %.2f, %.2f)\n", result.x, result.y, result.z);
-                break;
-            case 3:
-                printf("Dot Product: %.2f\n", dot_product(v1, v2));
-                break;
-            case 4:
-                result = cross_product(v1, v2);
-                printf("Result: (%.2f, %.2f, %.2f)\n", result.x, result.y, result.z);
-                break;
-            default:
-                printf("Invalid choice. Please try again.\n");
-        }
-    }
+    printf("v1: ");
+    print_vector(v1);
+    printf("v2: ");
+    print_vector(v2);
+    printf("Sum: ");
+    print_vector(sum);
+    printf("Difference: ");
+    print_vector(diff);
+    printf("Dot Product: %.2f\n", dot);
+    printf("Cross Product: ");
+    print_vector(cross);
 
     return 0;
 }
