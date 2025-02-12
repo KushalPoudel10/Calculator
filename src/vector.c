@@ -1,26 +1,26 @@
-#include <math.h>
 #include "vector.h"
+#include <math.h>
 
-void vector_add(Vector a, Vector b, Vector *result) {
-    result->x = a.x + b.x;
-    result->y = a.y + b.y;
-    result->z = a.z + b.z;
+void vector_add(Vector v1, Vector v2, Vector *result) {
+    result->x = v1.x + v2.x;
+    result->y = v1.y + v2.y;
+    result->z = v1.z + v2.z;
 }
 
-void vector_subtract(Vector a, Vector b, Vector *result) {
-    result->x = a.x - b.x;
-    result->y = a.y - b.y;
-    result->z = a.z - b.z;
+void vector_subtract(Vector v1, Vector v2, Vector *result) {
+    result->x = v1.x - v2.x;
+    result->y = v1.y - v2.y;
+    result->z = v1.z - v2.z;
 }
 
-double vector_dot_product(Vector a, Vector b) {
-    return a.x * b.x + a.y * b.y + a.z * b.z;
+double vector_dot_product(Vector v1, Vector v2) {
+    return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
 }
 
-void vector_cross_product(Vector a, Vector b, Vector *result) {
-    result->x = a.y * b.z - a.z * b.y;
-    result->y = a.z * b.x - a.x * b.z;
-    result->z = a.x * b.y - a.y * b.x;
+void vector_cross_product(Vector v1, Vector v2, Vector *result) {
+    result->x = v1.x * v2.y - v1.y * v2.x;
+    result->y = v1.y * v2.z - v1.z * v2.y;
+    result->z = v1.z * v2.x - v1.x * v2.z;
 }
 
 double vector_magnitude(Vector v) {
@@ -34,18 +34,28 @@ void vector_normalize(Vector v, Vector *result) {
     result->z = v.z / magnitude;
 }
 
-double vector_angle(Vector a, Vector b) {
-    double dot = vector_dot_product(a, b);
-    double mag_a = vector_magnitude(a);
-    double mag_b = vector_magnitude(b);
-    return acos(dot / (mag_a * mag_b));
+double vector_angle(Vector v1, Vector v2) {
+    double dot = vector_dot_product(v1, v2);
+    double magnitude1 = vector_magnitude(v1);
+    double magnitude2 = vector_magnitude(v2);
+    return acos(dot / (magnitude1 * magnitude2));
 }
 
-void vector_projection(Vector a, Vector b, Vector *result) {
-    double dot = vector_dot_product(a, b);
-    double mag_b_squared = vector_dot_product(b, b);
-    double scale = dot / mag_b_squared;
-    result->x = b.x * scale;
-    result->y = b.y * scale;
-    result->z = b.z * scale;
+void vector_projection(Vector v1, Vector v2, Vector *result) {
+    double dot = vector_dot_product(v1, v2);
+    double magnitude2 = vector_magnitude(v2);
+    double scalar = dot / (magnitude2 * magnitude2);
+    vector_scalar_multiply(v2, scalar, result);
+}
+
+void vector_scalar_multiply(Vector v, double scalar, Vector *result) {
+    result->x = v.x * scalar;
+    result->y = v.y * scalar;
+    result->z = v.z * scalar;
+}
+
+void vector_scalar_divide(Vector v, double scalar, Vector *result) {
+    result->x = v.x / scalar;
+    result->y = v.y / scalar;
+    result->z = v.z / scalar;
 }

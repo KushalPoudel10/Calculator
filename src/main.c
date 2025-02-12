@@ -7,25 +7,27 @@ void print_vector(Vector v) {
 
 void print_menu() {
     printf("=====================================\n");
-    printf(" Vector Calculator\n");
+    printf("          Vector Calculator          \n");
     printf("=====================================\n");
-    printf("1. Add Vectors\n");
-    printf("2. Subtract Vectors\n");
-    printf("3. Dot Product\n");
-    printf("4. Cross Product\n");
-    printf("5. Magnitude of a Vector\n");
-    printf("6. Normalize a Vector\n");
-    printf("7. Angle Between Vectors\n");
-    printf("8. Projection of Vector a onto Vector b\n");
-    printf("9. Perform All Calculations\n");
-    printf("10. Exit\n");
+    printf("1.  Add Vectors\n");
+    printf("2.  Subtract Vectors\n");
+    printf("3.  Dot Product\n");
+    printf("4.  Cross Product\n");
+    printf("5.  Magnitude of a Vector\n");
+    printf("6.  Normalize a Vector\n");
+    printf("7.  Angle Between Vectors\n");
+    printf("8.  Projection of Vector a onto Vector b\n");
+    printf("9.  Perform All Calculations\n");
+    printf("10. Scalar Multiplication\n");
+    printf("11. Vector Division by Scalar\n");
+    printf("12. Exit\n");
     printf("=====================================\n");
     printf("Enter your choice: ");
 }
 
 int main() {
     Vector v1, v2, result;
-    double dot, magnitude, angle;
+    double dot, magnitude, angle, scalar;
     int choice;
 
     printf("Enter vector v1 (x y z): ");
@@ -107,6 +109,20 @@ int main() {
                 print_vector(result);
                 break;
             case 10:
+                printf("Enter scalar value: ");
+                scanf("%lf", &scalar);
+                vector_scalar_multiply(v1, scalar, &result);
+                printf("Scalar Multiplication: ");
+                print_vector(result);
+                break;
+            case 11:
+                printf("Enter scalar value: ");
+                scanf("%lf", &scalar);
+                vector_scalar_divide(v1, scalar, &result);
+                printf("Vector Division by Scalar: ");
+                print_vector(result);
+                break;
+            case 12:
                 printf("Exiting...\n");
                 return 0;
             default:
