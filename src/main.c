@@ -36,7 +36,8 @@ int main() {
     printf("Enter vector v2 (x y z): ");
     scanf("%lf %lf %lf", &v2.x, &v2.y, &v2.z);
 
-    while (1) {
+    while (1) 
+    {
         print_menu();
         scanf("%d", &choice);
 
@@ -129,6 +130,7 @@ int main() {
                 printf("Invalid choice. Please try again.\n");
         }
         printf("-------------------------------------\n");
+        getchar();
     }
 
     return 0;
