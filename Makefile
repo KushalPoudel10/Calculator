@@ -18,7 +18,7 @@ OBJ = $(SRC:.c=.o)
 
 
 # executable ko final name setting
-TARGET = vector_calculator
+TARGET = kushal_calculator
 
 
 # RULES FOR MAKEFILE

@@ -5,6 +5,8 @@ typedef struct {
     double x, y, z;
 } Vector;
 
+// Function prototypes / declaring functions
+
 void vector_add(Vector v1, Vector v2, Vector *result);
 void vector_subtract(Vector v1, Vector v2, Vector *result);
 double vector_dot_product(Vector v1, Vector v2);

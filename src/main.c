@@ -29,6 +29,7 @@ int main() {
     Vector v1, v2, result;
     double dot, magnitude, angle, scalar;
     int choice;
+    char hold;
 
     printf("Enter vector v1 (x y z): ");
     scanf("%lf %lf %lf", &v1.x, &v1.y, &v1.z);
@@ -38,6 +39,7 @@ int main() {
 
     while (1) 
     {
+        scanf("%c",&hold);
         print_menu();
         scanf("%d", &choice);
 
@@ -46,38 +48,46 @@ int main() {
                 vector_add(v1, v2, &result);
                 printf("Sum: ");
                 print_vector(result);
+                scanf("%c",&hold);
                 break;
             case 2:
                 vector_subtract(v1, v2, &result);
                 printf("Difference: ");
                 print_vector(result);
+                scanf("%c",&hold);
                 break;
             case 3:
                 dot = vector_dot_product(v1, v2);
                 printf("Dot Product: %.2f\n", dot);
+                scanf("%c",&hold);
                 break;
             case 4:
                 vector_cross_product(v1, v2, &result);
                 printf("Cross Product: ");
                 print_vector(result);
+                scanf("%c",&hold);
                 break;
             case 5:
                 magnitude = vector_magnitude(v1);
                 printf("Magnitude of v1: %.2f\n", magnitude);
+                scanf("%c",&hold);
                 break;
             case 6:
                 vector_normalize(v1, &result);
                 printf("Normalized v1: ");
                 print_vector(result);
+                scanf("%c",&hold);
                 break;
             case 7:
                 angle = vector_angle(v1, v2);
                 printf("Angle between v1 and v2: %.2f radians\n", angle);
+                scanf("%c",&hold);
                 break;
             case 8:
                 vector_projection(v1, v2, &result);
                 printf("Projection of v1 onto v2: ");
                 print_vector(result);
+                scanf("%c",&hold);
                 break;
             case 9:
                 vector_add(v1, v2, &result);
@@ -108,6 +118,7 @@ int main() {
                 vector_projection(v1, v2, &result);
                 printf("Projection of v1 onto v2: ");
                 print_vector(result);
+                scanf("%c",&hold);
                 break;
             case 10:
                 printf("Enter scalar value: ");
@@ -115,6 +126,7 @@ int main() {
                 vector_scalar_multiply(v1, scalar, &result);
                 printf("Scalar Multiplication: ");
                 print_vector(result);
+                scanf("%c",&hold);
                 break;
             case 11:
                 printf("Enter scalar value: ");
@@ -122,6 +134,7 @@ int main() {
                 vector_scalar_divide(v1, scalar, &result);
                 printf("Vector Division by Scalar: ");
                 print_vector(result);
+                scanf("%c",&hold);
                 break;
             case 12:
                 printf("Exiting...\n");
@@ -129,8 +142,9 @@ int main() {
             default:
                 printf("Invalid choice. Please try again.\n");
         }
+        
         printf("-------------------------------------\n");
-        getchar();
+        
     }
 
     return 0;
