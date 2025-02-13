@@ -131,7 +131,7 @@ int main() {
         }
         
         printf("-------------------------------------\n");
-        while (getchar() != '\n'); // Clear the input buffer
+        while (getchar() != '\n');
     }
 
     return 0;
