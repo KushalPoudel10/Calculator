@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <conio.h>
 #include "vector.h"
 
 void print_vector(Vector v) {
@@ -29,6 +30,7 @@ int main() {
     Vector v1, v2, result;
     double dot, magnitude, angle, scalar;
     int choice;
+    int firstIteration = 1;
 
     printf("Enter vector v1 (x y z): ");
     scanf("%lf %lf %lf", &v1.x, &v1.y, &v1.z);
@@ -38,6 +40,8 @@ int main() {
 
     while (1) 
     {
+        if(!firstIteration) getch();
+        firstIteration = 0;
         print_menu();
         scanf("%d", &choice);
 
@@ -131,7 +135,10 @@ int main() {
         }
         
         printf("-------------------------------------\n");
-        while (getchar() != '\n');
+        printf("Press any key to perform another operation for those same given vectors.\n");
+        printf("-------------------------------------\n");
+        while (getchar() != '\n')
+        {}
     }
 
     return 0;
